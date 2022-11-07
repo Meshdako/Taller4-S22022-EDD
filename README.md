@@ -1,15 +1,15 @@
-# Taller3-S22022-EDD
+# Taller4-S22022-EDD
 ![Image_text](Logo_UTEM.jpg)
-Taller 3 de la asignatura Estructura de Datos, hecho por Martín Sobarzo (Ayudante).
+Taller 4 de la asignatura Estructura de Datos, hecho por Martín Sobarzo (Ayudante).
 
 ## Clonación de Repositorio:
 Se debe clonar el repositorio desde la terminal con el siguiente comando:
 ```bash 
-$ git clone https://github.com/Meshdako/Taller3-S22022-EDD.git
+$ git clone https://github.com/Meshdako/Taller4-S22022-EDD.git
 ```
 _Opcional:_ Si se registró la SSH Key en GITHUB, proceda con el siguiente enlace:
 ```
-$ git clone git@github.com:Meshdako/Taller3-S22022-EDD.git
+$ git clone git@github.com:Meshdako/Taller4-S22022-EDD.git
 ```
 
 ### Linux
