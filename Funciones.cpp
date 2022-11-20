@@ -2,13 +2,14 @@
 
 typedef Nodo *ABB;
 
-typedef struct miEstructura
-{
+typedef struct miEstructura{
     char _DV;
     ABB miArbolito;
-} miEstructura;
+}miEstructura;
 
 typedef miEstructura misEstructuras[11];
+
+/* Funciones globales */
 
 void Inicializacion(misEstructuras &E)
 {
@@ -58,6 +59,7 @@ void postOrden(ABB &T)
 
 /* Funciones del Taller 4 */
 
+// Menu1
 void ElectoresXDV(misEstructuras &E, char in_DV)
 {
     for(int i = 0; i < 11; i++){
@@ -67,6 +69,7 @@ void ElectoresXDV(misEstructuras &E, char in_DV)
     }
 }
 
+// Menu2
 void BuscarKey(ABB &T, long in_Run)
 {
     if(T == NULL)
@@ -94,14 +97,16 @@ void BuscarXRut(misEstructuras &E, long in_Run, char in_DV)
     }
 }
 
+// Menu3
 void MayorKey(ABB &T, Elector &in_Mayor)
 {
     if(T != NULL){
+        MayorKey(T->izq, in_Mayor);
+        MayorKey(T->der, in_Mayor);
+
         if(T->_elector.getRUN().getRun() > in_Mayor.getRUN().getRun()){
             in_Mayor = T->_elector;
         }
-        // Voy recorriendo siempre por la derecha.
-        MayorKey(T->der, in_Mayor);
     }
 }   
 
@@ -117,6 +122,7 @@ void MayorRut(misEstructuras &E)
     in_Mayor.verElector();
 }
 
+// Menu4
 void MenorAnho(ABB &T, Elector &in_Menor)
 {
     if(T != NULL){
@@ -152,7 +158,7 @@ void Menu(misEstructuras &E)
     {
         system("clear");
         cout << "\e[1mSeleccione una opción:\e[0m" << endl;
-        cout << "1.-  Electores por DV" << endl;
+        cout << "1.- Electores por DV" << endl;
         cout << "2.- Buscar por RUT" << endl;
         cout << "3.- Mayor RUT" << endl;
         cout << "4.- Menor edad por cada DV" << endl;
@@ -206,12 +212,9 @@ void Menu(misEstructuras &E)
 
 void vectorAArbol(Elector p[], misEstructuras &E, int indice)
 {
-    for (int i = 0; i < indice; i++)
-    {
-        for (int j = 0; j < 11; j++)
-        {
-            if (p[i].getRUN().getDv() == E[j]._DV)
-            {
+    for (int i = 0; i < indice; i++){
+        for (int j = 0; j < 11; j++){
+            if (p[i].getRUN().getDv() == E[j]._DV){
                 insertarABB(p[i].getRUN().getRun(), E[j].miArbolito, p[i]);
             }
         }
@@ -226,16 +229,12 @@ void archivoAVector(string nombreArchivo, Elector p[], int &indice)
 
     archivo.open(nombreArchivo, ios::in);
 
-    if (archivo.is_open() == true)
-    {
-
-        while (getline(archivo, lineaObtenida, '\n'))
-        {
+    if (archivo.is_open() == true){
+        while (getline(archivo, lineaObtenida, '\n')){
             // ahora recorremos la línea
             vector<string> data = split(lineaObtenida, ';');
 
-            if (indice > 0)
-            {
+            if (indice > 0){
                 RUN Run_Aux(stol(data[0]), data[1].front());
 
                 Fecha Fecha_Aux(stoi(data[5]), stoi(data[6]), stoi(data[7]));
