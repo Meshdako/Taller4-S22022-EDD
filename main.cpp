@@ -22,6 +22,9 @@
 #include "Clases/Elector.h"
 #include "Clases/Elector.cpp"
 
+#include "ABB/Nodo.h"
+#include "ABB/Nodo.cpp"
+
 using namespace std;
 
 #define MAX_VECTOR 1001
@@ -31,11 +34,22 @@ int main()
     int indice = 0; //indice del vector  o cantidad actual de elementos en el vector
     string nombreArchivo ="servel.txt";
     
+    misEstructuras E;
+
+    Inicializacion(E);
+
+    for(int i = 0; i < 11; i++){
+        cout << E[i]._DV << " - ";
+    }
+    cout << endl;
+    
+
     Elector Electores[MAX_VECTOR];
 
     archivoAVector(nombreArchivo, Electores, indice);
+    vectorAArbol(Electores, E, indice);
 
-    Menu();
+    Menu(E);
 
     return 0;
 }
