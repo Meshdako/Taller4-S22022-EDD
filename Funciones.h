@@ -22,6 +22,7 @@ typedef struct miEstructura miEstructura;
 
 typedef miEstructura misEstructuras[11];
 
+// Función para inicializar cada DV de la estructura.
 void Inicializacion(misEstructuras &E);
 
 /* Funciones globales */
